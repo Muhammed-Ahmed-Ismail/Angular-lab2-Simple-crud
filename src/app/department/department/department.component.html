@@ -1,0 +1,35 @@
+<section class="card col-12 row">
+  <h1>Department Crud </h1>
+  <section class="container col-12 row">
+    <label for="id"> ID</label>
+    <input #i1 class="input-controller col-6" type="text" id="id">
+    <label for="ID"> name</label>
+    <input  #i2 class="input-controller" type="text" id="name">
+    <label  for="ID"> loc</label>
+    <input #i3 class="input-controller" type="text" id="loc">
+    <button    class="btn btn-primary" (click)="add(i1.value,i2.value ,i3.value); " *ngIf="!editing" > add </button>
+    <button  class="btn btn-success" *ngIf="editing" (click)="save(i1,i2,i3)"> save</button>
+  </section>
+  <section>
+    <table class="table table-hover col-12">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Location</th>
+        <th>options</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let department of departments; let ser=index">
+        <td>{{ser+1}}</td>
+        <td >{{department.id}}</td>
+        <td >{{department.name}}</td>
+        <td >{{department.loc}}</td>
+        <td class="flex "><button class="btn btn-danger" (click)="delete(department.id)"> delete</button> <span> </span> <button class="btn btn-warning " (click)="update(department.id,i1,i2,i3)"> Edit</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</section>

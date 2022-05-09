@@ -1,0 +1,39 @@
+<section class="card col-12 row">
+ <h1> Student Crud </h1>
+  <section class="container col-12 row">
+    <label for="id"> ID</label>
+    <input #i1 class="input-controller col-6" type="text" id="id">
+    <label for="name"> name</label>
+    <input  #i2 class="input-controller" type="text" id="name">
+    <label  for="age"> age</label>
+    <input #i3 type="text" id="age">
+    <label for="dept-name">student name</label>
+    <input #i4 type="text" id="dept-name">
+    <button    class="btn btn-primary" (click)="add(i1.value,i2.value ,i3.value,i4.value); " *ngIf="!editing" > add </button>
+    <button  class="btn btn-success" *ngIf="editing" (click)="save(i1,i2,i3,i4)"> save</button>
+  </section>
+  <section>
+    <table class="table table-hover col-12">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Department Name</th>
+        <th>options</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let student of students; let ser=index">
+        <td>{{ser+1}}</td>
+        <td >{{student.id}}</td>
+        <td >{{student.name}}</td>
+        <td >{{student.age}}</td>
+        <td >{{student.deptName}}</td>
+        <td class="flex "><button class="btn btn-danger" (click)="delete(student.id)"> delete</button> <span> </span> <button class="btn btn-warning " (click)="update(student.id,i1,i2,i3,i4)"> Edit</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</section>
